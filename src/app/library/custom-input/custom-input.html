@@ -2,11 +2,13 @@
   <h2 class="input-label" *ngIf="inputLabel">{{ inputLabel }}</h2>
   <div
     #element
-    [ngClass]="{
-      invalid: !isValid
-    }"
+    name="inputText"
+    [ngClass]="{ invalid: !isValid }"
     class="outline editable"
-    contenteditable="true">
+    (keyup)="updateValue()"
+    (blur)="onTouchCallback()"
+    contenteditable="true"
+    ngDefaultControl>
   </div>
   <div class="error-container" *ngIf="!isValid">
     <div class="error" *ngFor="let errorMessage of errorMessages">

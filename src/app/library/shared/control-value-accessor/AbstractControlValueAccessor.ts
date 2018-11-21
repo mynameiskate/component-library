@@ -8,6 +8,7 @@ export abstract class AbstractValueAccessor<T> implements ControlValueAccessor {
   writeValue(value: T) {
     this.value = value;
     this.onChangeCallback(value);
+    console.log(value);
   }
 
   onChangeCallback = (_: any) => {}
