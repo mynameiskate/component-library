@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnChanges, SimpleChanges, Input } from '@angular/core';
 
 import { AbstractValueAccessor, CreateAccessorProvider } from '../control-value-accessor/AbstractControlValueAccessor';
 
@@ -8,17 +8,20 @@ import { AbstractValueAccessor, CreateAccessorProvider } from '../control-value-
   providers: [CreateAccessorProvider(CustomInputComponent)]
 })
 export class CustomInputComponent extends AbstractValueAccessor<string> implements OnChanges {
+  @Input() inputLabel: string;
+  @Input() errorMessages: Array[string] = ["error description 1", "error description 2"];
+
   @ViewChild('element') element: ElementRef;
 
-  inputText: string;
+  private isValid: boolean = false;
 
   ngOnChanges(changes: SimpleChanges) {
 
   }
 
   writeValue(value: string) {
-    //this.element.nativeElement.innerText = value;
-    this.inputText = value;
+    this.element.nativeElement.innerText = value;
+    this.value = value;
   }
 }
 

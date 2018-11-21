@@ -1,0 +1,36 @@
+.focused {
+  outline: none;
+}
+
+.editable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16pt;
+  text-align: center;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease-in-out;
+
+  &:focus {
+    .focused();
+  }
+}
+
+.outline {
+  width: 280px;
+  color: #001E00;
+  background-color: transparent;
+  border: 1px #388E8E solid;
+  font-size: 14pt;
+  overflow: hidden;
+  height: 40px;
+  margin: 5px;
+}
+
+.input-label {
+  margin: 10px;
+  text-align: center;
+  font-size: 18pt;
+  color: #001E00;
+}
