@@ -12,15 +12,11 @@ export class CustomInputComponent extends AbstractValueAccessor<string> {
   @Input() inputLabel: string;
   @Input() errorMessages: Array<string> = [];
   @Input() validationService: IInputValidationService;
+  @Input() maxLength: number;
 
   @ViewChild('element') element: ElementRef;
 
   isValid: boolean = true;
-
-  writeValue(value: string) {
-    this.element.nativeElement.innerText = value;
-    this.value = value;
-  }
 
   validate(value: string) {
     if (this.validationService) {
@@ -33,9 +29,13 @@ export class CustomInputComponent extends AbstractValueAccessor<string> {
     }
   }
 
+  writeValue(value: string) {
+    this.element.nativeElement.innerText = value;
+    super.writeValue(value);
+  }
 
   updateValue() {
-    const value = this.element.nativeElement.innerText;
+    const value = this.element.nativeElement.value;
     this.validate(value);
     this.onChangeCallback(value);
   }
