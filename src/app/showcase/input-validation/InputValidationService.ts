@@ -5,9 +5,9 @@ export class InputValidationService implements IInputValidationService {
   private maxLength: number = 30;
 
   validate(input: string) : Array<string> | null {
-    if (input.length <= this.minLength) {
+    if (input.length < this.minLength) {
       return [`Minimum length is ${this.minLength}`];
-    } else if (input.length >= this.maxLength) {
+    } else if (input.length > this.maxLength) {
       return [`Maximum length is ${this.maxLength}`];
     } else if (Math.random() < 0.5) {
       return ['Sorry, but random generator thinks otherwise.'];

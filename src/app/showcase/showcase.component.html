@@ -1,8 +1,7 @@
-<div class="form-group">
+<div [formGroup]="inputForm" class="form-group">
   <custom-input
-    [validationService]="validationService"
+    formControlName="customInput"
     [inputLabel]="inputLabel"
-    [(ngModel)]="inputText"
     [maxLength]=30>
   </custom-input>
 </div>

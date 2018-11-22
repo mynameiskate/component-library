@@ -1,18 +1,11 @@
-<div class="form-group">
+<ng-container>
   <h2 class="input-label" *ngIf="inputLabel">{{ inputLabel }}</h2>
   <input
     #element
     name="inputText"
-    [ngClass]="{ invalid: !isValid }"
     class="outline editable"
-    (keyup)="updateValue($event)"
+    [ngModel]="value"
     (blur)="onTouchCallback()"
     type="text"
     ngDefaultControl>
-  <div class="error-container" *ngIf="!isValid">
-    <div class="error" *ngFor="let errorMessage of errorMessages">
-      <i class="fa fa-warning"></i>
-      {{ errorMessage }}
-    </div>
-  </div>
-</div>
+</ng-container>
