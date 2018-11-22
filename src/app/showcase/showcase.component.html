@@ -1,7 +1,12 @@
 <div [formGroup]="inputForm" class="form-group">
   <custom-input
-    formControlName="customInput"
-    [inputLabel]="inputLabel"
+    formControlName="defaultValidation"
+    [inputLabel]="defaultInputLabel"
+    [maxLength]=30>
+  </custom-input>
+  <custom-input
+    formControlName="customValidation"
+    [inputLabel]="customInputLabel"
     [maxLength]=30>
   </custom-input>
 </div>

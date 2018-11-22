@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { InputValidationService } from "./input-validation/InputValidationService";
 
 @Component({
   selector: 'app-showcase',
@@ -8,13 +9,23 @@ import { FormBuilder } from '@angular/forms';
 })
 export class ShowcaseComponent implements OnInit {
   inputText: string = "some value";
-  inputLabel: string = "Some example title";
+  defaultInputLabel: string = "Default validation example:";
+  customInputLabel: string = "Custom validation example:";
 
   inputForm = this.fb.group({
-    customInput: ['hey']
+    defaultValidation: [
+      'hey',
+      [
+        Validators.minLength(5),
+        Validators.maxLength(20),
+        Validators.required
+      ]
+    ],
+    customValidation: ['bye', [InputValidationService.randomValidator] ]
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {
+  }
 
   ngOnInit() {
 

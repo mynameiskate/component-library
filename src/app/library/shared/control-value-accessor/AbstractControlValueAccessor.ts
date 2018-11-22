@@ -2,11 +2,11 @@ import { forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export abstract class AbstractValueAccessor<T> implements ControlValueAccessor {
-  protected value: T;
+  protected innerValue: T;
   @Input() disabled: boolean = false;
 
   writeValue(value: T) {
-    this.value = value;
+    this.innerValue = value;
     this.onChangeCallback(value);
   }
 

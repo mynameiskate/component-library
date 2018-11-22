@@ -1,16 +1,17 @@
-import { IInputValidationService } from "../../library/shared/validation-service/IInputValidationService";
+export class InputValidationService {
+  static getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
+    const config = {
+      'required': 'Field is required',
+      'randomError': 'Sorry, but random generator thinks otherwise',
+      'minlength': `Minimum length is ${validatorValue.requiredLength}`
+    };
 
-export class InputValidationService implements IInputValidationService {
-  private minLength: number = 5;
-  private maxLength: number = 30;
+    return config[validatorName];
+  }
 
-  validate(input: string) : Array<string> | null {
-    if (input.length < this.minLength) {
-      return [`Minimum length is ${this.minLength}`];
-    } else if (input.length > this.maxLength) {
-      return [`Maximum length is ${this.maxLength}`];
-    } else if (Math.random() < 0.5) {
-      return ['Sorry, but random generator thinks otherwise.'];
+  static randomValidator(control) {
+    if (Math.random() < 0.5) {
+      return { 'randomError': true };
     } else {
       return null;
     }

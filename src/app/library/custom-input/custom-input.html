@@ -3,9 +3,12 @@
   <input
     #element
     name="inputText"
+    [ngClass]="{ invalid: !control.valid }"
     class="outline editable"
-    [ngModel]="value"
+    [ngModel]="innerValue"
+    (change)="updateValue($event)"
     (blur)="onTouchCallback()"
     type="text"
     ngDefaultControl>
+  <control-errors [control]="control"></control-errors>
 </ng-container>
