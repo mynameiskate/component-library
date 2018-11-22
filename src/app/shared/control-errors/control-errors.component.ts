@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { InputValidationService } from "../../../showcase/input-validation/InputValidationService";
+import { InputValidationService } from "../../showcase/input-validation/InputValidationService";
 
 @Component({
-  selector: 'control-errors',
+  selector: 'clb-control-errors',
   templateUrl: './control-errors.component.html'
 })
-export class ControlErrors {
+export class ControlErrorsComponent {
   @Input() control: FormControl;
 
   get errorMessage() {

@@ -1,7 +1,7 @@
 import { forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-export abstract class AbstractValueAccessor<T> implements ControlValueAccessor {
+export abstract class ControlValueAccessorBase<T> implements ControlValueAccessor {
   protected innerValue: T;
   @Input() disabled: boolean = false;
 

@@ -1,14 +1,14 @@
 import { Component, ElementRef, ViewChild, OnInit, Input, Injector } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
-import { AbstractValueAccessor, CreateAccessorProvider } from '../shared/control-value-accessor/AbstractControlValueAccessor';
+import { ControlValueAccessorBase, CreateAccessorProvider } from '../../shared/control-value-accessor/ControlValueAccessorBase';
 
 @Component({
-  selector: 'custom-input',
-  templateUrl: './custom-input.html',
+  selector: 'clb-custom-input',
+  templateUrl: './custom-input.component.html',
   providers: [CreateAccessorProvider(CustomInputComponent)]
 })
-export class CustomInputComponent extends AbstractValueAccessor<string> implements OnInit {
+export class CustomInputComponent extends ControlValueAccessorBase<string> implements OnInit {
   @Input() inputLabel: string;
   @Input() maxLength: number;
 

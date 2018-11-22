@@ -1,12 +1,12 @@
 export class InputValidationService {
   static getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
-    const config = {
+    const errorTable = {
       'required': 'Field is required',
       'randomError': 'Sorry, but random generator thinks otherwise',
       'minlength': `Minimum length is ${validatorValue.requiredLength}`
     };
 
-    return config[validatorName];
+    return errorTable[validatorName];
   }
 
   static randomValidator(control) {
