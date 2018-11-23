@@ -1,4 +1,4 @@
-<div class="error-container" *ngIf="errorMessage">
+<div class="error-container" *ngFor="let errorMessage of errorMessages">
   <div class="error">
     <i class="fa fa-warning"></i>
     {{ errorMessage }}
