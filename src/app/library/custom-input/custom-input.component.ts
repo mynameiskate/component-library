@@ -11,6 +11,7 @@ import { ControlValueAccessorBase, CreateAccessorProvider } from '../../shared/c
 export class CustomInputComponent extends ControlValueAccessorBase<string> implements OnInit {
   @Input() inputLabel: string;
   @Input() maxLength: number;
+  @Input() inputType: string;
 
   @ViewChild('element') element: ElementRef;
 
@@ -25,6 +26,7 @@ export class CustomInputComponent extends ControlValueAccessorBase<string> imple
   }
 
   writeValue(value: string) {
+    console.log(this.inputType);
     this.element.nativeElement.innerText = value;
     super.writeValue(value);
   }

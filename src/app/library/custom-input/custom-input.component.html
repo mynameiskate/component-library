@@ -7,6 +7,6 @@
   [ngModel]="innerValue"
   (change)="updateValue($event)"
   (blur)="onTouchCallback()"
-  type="text"
+  [type]="inputType"
   ngDefaultControl>
 <clb-control-errors [control]="control"></clb-control-errors>
