@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { InputValidationService } from "../shared/input-validation/InputValidationService";
+
+import * as ValidationService from "../shared/input-validation/InputValidationService";
 
 @Component({
   selector: 'app-showcase',
@@ -23,7 +24,7 @@ export class ShowcaseComponent {
     customValidation: [
       'bye',
       [
-        InputValidationService.randomValidator
+        ValidationService.randomValidator
       ]
     ]
   });

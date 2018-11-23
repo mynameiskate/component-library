@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { InputValidationService } from "../input-validation/InputValidationService";
+import * as ValidationService from "../input-validation/InputValidationService";
 
 @Component({
   selector: 'clb-control-errors',
@@ -14,7 +14,7 @@ export class ControlErrorsComponent {
 
     for (let propertyName in this.control.errors) {
       if (this.control.errors.hasOwnProperty(propertyName)) {
-        const errorMsg = InputValidationService.getValidatorErrorMessage(propertyName,
+        const errorMsg = ValidationService.getValidatorErrorMessage(propertyName,
           this.control.errors[propertyName]);
         errors.push(errorMsg);
       }
