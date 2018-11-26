@@ -1,13 +1,34 @@
-<div [formGroup]="inputForm" class="form-group">
+<div [formGroup]="inputForm" class="form-group form-outline">
   <clb-custom-input
-    formControlName="defaultValidation"
-    [inputLabel]="defaultInputLabel"
+    formControlName="username"
+    inputLabel="Name"
+    inputType="text">
+  </clb-custom-input>
+  <clb-custom-input
+    formControlName="email"
+    inputLabel="Email"
+    inputType="text">
+  </clb-custom-input>
+  <clb-custom-input
+    formControlName="password"
+    inputLabel="Password"
     inputType="password"
-    [maxLength]=30>
+  >
   </clb-custom-input>
   <clb-custom-input
-    formControlName="customValidation"
-    [inputLabel]="customInputLabel"
-    [maxLength]=30>
+    formControlName="passwordConfirm"
+    inputLabel="Confirm Password"
+    inputType="password"
+  >
   </clb-custom-input>
+  <div class="btn-group" role="group">
+    <button
+      type="submit"
+      class="btn btn-secondary btn-md outline"
+      [disabled]="!inputForm.valid"
+    >
+      Submit
+    </button>
+    <button type="button" class="btn btn-secondary btn-md outline">Cancel</button>
+  </div>
 </div>

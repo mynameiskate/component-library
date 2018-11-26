@@ -26,7 +26,6 @@ export class CustomInputComponent extends ControlValueAccessorBase<string> imple
   }
 
   writeValue(value: string) {
-    console.log(this.inputType);
     this.element.nativeElement.innerText = value;
     super.writeValue(value);
   }

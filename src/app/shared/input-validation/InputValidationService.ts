@@ -1,3 +1,5 @@
+import { AbstractControl } from "@angular/forms";
+
 function getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
   const errorTable = {
     min: `Minimum value is ${validatorValue.min}`,
@@ -15,7 +17,7 @@ function getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
     : validatorValue;
 }
 
-function randomValidator(control) {
+function random(control) {
   if (Math.random() < 0.5) {
     return {'randomError': 'Sorry, but random generator thinks otherwise.'};
   } else {
@@ -23,9 +25,21 @@ function randomValidator(control) {
   }
 }
 
+function matchPassword(control: AbstractControl) {
+  let password = control.get('password').value;
+  let passwordConfirm = control.get('passwordConfirm').value;
+
+  if(password !== passwordConfirm) {
+    control.get('passwordConfirm').setErrors( {passwordMatch: 'Passwords do not match!'} )
+  } else {
+    return null;
+  }
+}
+
 export {
   getValidatorErrorMessage,
-  randomValidator
+  random,
+  matchPassword
 }
 
 

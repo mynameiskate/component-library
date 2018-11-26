@@ -9,24 +9,25 @@ import * as ValidationService from "../shared/input-validation/InputValidationSe
   styleUrls: ['../../assets/styles/form.less'],
 })
 export class ShowcaseComponent {
-  defaultInputLabel: string = "Default validation example:";
-  customInputLabel: string = "Custom validation example:";
-
   inputForm = this.fb.group({
-    defaultValidation: [
-      'hey',
+    username: ['', Validators.minLength(1)],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['',
       [
+        Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(20),
-        Validators.required
+        Validators.maxLength(20)
       ]
     ],
-    customValidation: [
-      'bye',
+    passwordConfirm: ['',
       [
-        ValidationService.randomValidator
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(20)
       ]
-    ]
+    ],
+  }, {
+    validator: ValidationService.matchPassword
   });
 
   constructor(private fb: FormBuilder) {
