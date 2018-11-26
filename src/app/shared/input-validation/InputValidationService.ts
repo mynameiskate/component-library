@@ -27,8 +27,8 @@ function random(control: AbstractControl) {
 
 function matchPassword(controlName: string, matchControlName: string) {
   return (control: AbstractControl) => {
-    let password = control.get(controlName);
-    let passwordConfirm = control.get(matchControlName);
+    const password = control.get(controlName);
+    const passwordConfirm = control.get(matchControlName);
 
     if (!password || !password.value || !passwordConfirm) {
       return null;
@@ -36,6 +36,8 @@ function matchPassword(controlName: string, matchControlName: string) {
 
     if (password.value !== passwordConfirm.value) {
       control.get(matchControlName).setErrors({passwordMatch: 'Passwords do not match!'})
+
+      return {inputError: 'Form contains errors.'};
     } else {
       return null;
     }
