@@ -27,7 +27,7 @@ export class ShowcaseComponent {
       ]
     ],
   }, {
-    validator: ValidationService.matchPassword
+    validator: ValidationService.matchPassword('password', 'passwordConfirm')
   });
 
   constructor(private fb: FormBuilder) {

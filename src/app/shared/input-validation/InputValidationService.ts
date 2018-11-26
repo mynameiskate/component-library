@@ -17,7 +17,7 @@ function getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
     : validatorValue;
 }
 
-function random(control) {
+function random(control: AbstractControl) {
   if (Math.random() < 0.5) {
     return {'randomError': 'Sorry, but random generator thinks otherwise.'};
   } else {
@@ -25,14 +25,20 @@ function random(control) {
   }
 }
 
-function matchPassword(control: AbstractControl) {
-  let password = control.get('password').value;
-  let passwordConfirm = control.get('passwordConfirm').value;
+function matchPassword(controlName: string, matchControlName: string) {
+  return (control: AbstractControl) => {
+    let password = control.get(controlName);
+    let passwordConfirm = control.get(matchControlName);
 
-  if(password !== passwordConfirm) {
-    control.get('passwordConfirm').setErrors( {passwordMatch: 'Passwords do not match!'} )
-  } else {
-    return null;
+    if (!password || !password.value || !passwordConfirm) {
+      return null;
+    }
+
+    if (password.value !== passwordConfirm.value) {
+      control.get(matchControlName).setErrors({passwordMatch: 'Passwords do not match!'})
+    } else {
+      return null;
+    }
   }
 }
 
