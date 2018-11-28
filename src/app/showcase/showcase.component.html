@@ -1,9 +1,19 @@
-<div [formGroup]="inputForm" class="form-group form-outline">
+<form [formGroup]="inputForm"
+     class="form-group form-outline"
+     (ngSubmit)="onSubmit()">
   <clb-custom-input
     formControlName="username"
     inputLabel="Name"
     inputType="text">
   </clb-custom-input>
+  <div class="dropdown-container">
+    <clb-dropdown
+      togglerTitle="Gender"
+      [itemTemplate]="item"
+      formControlName="gender"
+      [items]="getGenderOptions()">
+    </clb-dropdown>
+  </div>
   <clb-custom-input
     formControlName="email"
     inputLabel="Email"
@@ -29,7 +39,23 @@
     >
       Submit
     </button>
-    <button type="button" class="btn btn-secondary btn-md outline">Cancel</button>
+    <button
+      type="button"
+      (click)="resetForm(formDirective)"
+      class="btn btn-secondary btn-md outline"
+    >
+      Reset
+    </button>
   </div>
   <clb-control-errors [control]="inputForm"></clb-control-errors>
-</div>
+</form>
+
+<pre>{{ formData | json }}</pre>
+
+<ng-template dropdown-selected-value let-item #item>
+  <div
+    class="dropdown-item"
+  >
+    {{ item.value }}
+  </div>
+</ng-template>
