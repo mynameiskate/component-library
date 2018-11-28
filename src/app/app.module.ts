@@ -8,9 +8,7 @@ import { AppComponent } from './app.component';
 import { ShowcaseComponent } from './showcase/showcase.component';
 import { CustomInputComponent } from "./library/custom-input/custom-input.component";
 import { ControlErrorsComponent } from "./shared/control-errors/control-errors.component";
-import { Dropdown } from "./shared/dropdown/dropdown";
-import { DropdownItemDirective } from "./shared/directives/DropdownItemDirective";
-import { DropdownSelectedValueDirective } from "./shared/directives/DropdownSelectedValueDirective";
+import { DropdownComponent } from "./library/dropdown/dropdown.component";
 
 
 @NgModule({
@@ -19,9 +17,7 @@ import { DropdownSelectedValueDirective } from "./shared/directives/DropdownSele
     ShowcaseComponent,
     CustomInputComponent,
     ControlErrorsComponent,
-    Dropdown,
-    DropdownItemDirective,
-    DropdownSelectedValueDirective,
+    DropdownComponent
   ],
   imports: [
     NgbModule,

@@ -1,8 +1,8 @@
 <div ngbDropdown class="dropdown" #dropdownInstance="ngbDropdown" [ngClass]="{ 'element-disabled': disabled }">
   <h2 class="toggler-title" *ngIf="togglerTitle">{{ togglerTitle }}</h2>
   <div class="search-container">
-    <div *ngIf="!searchable" ngbDropdownToggle class="btn btn-outline primary">
-      <ng-container *ngIf="selectedItem">
+    <div ngbDropdownToggle class="btn btn-outline primary">
+      <ng-container *ngIf="selectedItemId">
         <ng-container
           *ngTemplateOutlet="itemTemplate || defItemTemplate; context: {$implicit: selectedItem}">
         </ng-container>
@@ -13,7 +13,7 @@
         <button
           type="button"
           class="dropdown-item"
-          (click)="onItemSelect(item)">
+          (click)="onItemSelect(item.id)">
           <ng-container
             *ngTemplateOutlet="itemTemplate || defItemTemplate; context: {$implicit: item}">
           </ng-container>

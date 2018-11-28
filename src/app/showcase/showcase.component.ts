@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import * as ValidationService from "../shared/input-validation/InputValidationService";
-import { IDropdownItem } from "../shared/dropdown-models/models";
+import { IDropdownItem } from "../library/dropdown/dropdown.models";
 
 @Component({
   selector: 'app-showcase',

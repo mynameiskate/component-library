@@ -78,8 +78,7 @@
   box-sizing: border-box;
   border: none;
   text-align: center;
-  width: 100%;
-  display: block;
+  display: inline-block;
   padding: 5px 1.5rem;
   clear: both;
   background: 0 0;
@@ -97,4 +96,16 @@
 
 .show {
   display: inline-block;
+}
+
+.dropdown-toggle {
+
+  .dropdown-item {
+    width: 85%;
+  }
+
+  &::after {
+    float: right;
+    margin: 16px 6px;
+  }
 }
