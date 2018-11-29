@@ -1,0 +1,35 @@
+<div ngbDropdown
+     autoClose="false"
+     class="dropdown"
+     #dropdownInstance="ngbDropdown"
+     [ngClass]="{ 'element-disabled': disabled }">
+  <h2 class="toggler-title" *ngIf="label">{{ label }}</h2>
+  <div class="search-container">
+    <div ngbDropdownToggle class="btn btn-outline  multiselect" (blur)="onBlur()">
+      <div class="dropdown-item" *ngIf="selectedItemsIds.length">
+        {{ selectedItems }}
+      </div>
+    </div>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic">
+      <div *ngFor="let item of items" class="dropdown-item">
+        <input
+          class="check-input"
+          type="checkbox"
+          [checked]="isItemSelected(item.id)"
+          (change)="onItemSelect(item.id)"
+        >
+        <ng-container
+          *ngTemplateOutlet="itemTemplate || defItemTemplate; context: {$implicit: item}">
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template dropdown-selected-value let-item #defItemTemplate>
+  <div
+    class="dropdown-item"
+  >
+    {{ item.value }}
+  </div>
+</ng-template>

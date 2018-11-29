@@ -5,6 +5,8 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  width: 227px;
+  //overflow: hidden;
 
   .editable {
     margin-left: 20px;
@@ -15,6 +17,13 @@
     padding: 0;
     font-size: 14pt;
   }
+
+
+  &:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
 }
 
 .search-container {
@@ -68,6 +77,7 @@
   text-align: left;
   list-style: none;
   background-clip: padding-box;
+  word-break: break-word;
 
   .dropdown-item:hover {
     .hovered();
@@ -83,6 +93,7 @@
   clear: both;
   background: 0 0;
   height: 100%;
+  white-space: pre-line;
 
   &:hover {
     background-color: transparent;
@@ -107,5 +118,11 @@
   &::after {
     float: right;
     margin: 16px 6px;
+  }
+
+
+  &:focus {
+    .focused();
+    box-shadow: none;
   }
 }

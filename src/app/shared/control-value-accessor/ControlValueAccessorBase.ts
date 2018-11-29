@@ -11,7 +11,7 @@ export abstract class ControlValueAccessorBase<T> implements ControlValueAccesso
   }
 
   onChangeCallback = (_: any) => {}
-  onTouchCallback = () => {}
+  onTouchCallback = () => {console.log('touched');}
 
   registerOnChange(fn: (_: any) => void) {
     this.onChangeCallback = fn;

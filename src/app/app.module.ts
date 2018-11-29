@@ -9,6 +9,7 @@ import { ShowcaseComponent } from './showcase/showcase.component';
 import { CustomInputComponent } from "./library/custom-input/custom-input.component";
 import { ControlErrorsComponent } from "./shared/control-errors/control-errors.component";
 import { DropdownComponent } from "./library/dropdown/dropdown.component";
+import { MultiselectComponent } from "./library/multiselect/multiselect.component";
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { DropdownComponent } from "./library/dropdown/dropdown.component";
     ShowcaseComponent,
     CustomInputComponent,
     ControlErrorsComponent,
-    DropdownComponent
+    DropdownComponent,
+    MultiselectComponent
   ],
   imports: [
     NgbModule,

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, TemplateRef, HostListener, HostBinding } from '@angular/core';
 import { IDropdownItem } from './dropdown.models';
 import { ControlValueAccessorBase, CreateAccessorProvider } from '../../shared/control-value-accessor/ControlValueAccessorBase';
 
@@ -13,6 +13,11 @@ export class DropdownComponent extends ControlValueAccessorBase<String> {
   @Input() itemTemplate: TemplateRef<any>;
 
   @Output() selectionChange = new EventEmitter<string>();
+
+  /*@HostBinding('attr.tabindex') tabindex = '0';
+  @HostListener('blur') onBlur() {
+    this.onTouchCallback();
+  }*/
 
   selectedItemId: string;
 
