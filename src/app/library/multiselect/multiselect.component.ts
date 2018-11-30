@@ -45,4 +45,23 @@ export class MultiselectComponent extends ControlValueAccessorBase<String> {
       .map(item => item.value)
       .join(', ');
   }
+
+  get sortedItems() {
+    return this.items.sort(this.checkedSort);
+  }
+
+  checkedSort = (x: IDropdownItem, y: IDropdownItem) => {
+    const xSelected = this.selectedItemsIds.some(id => x.id == id);
+    const ySelected = this.selectedItemsIds.some(id => y.id == id);
+
+    if (xSelected && ySelected) {
+      if (x.value === y.value) {
+        return 0;
+      } else {
+        return (x.value > y.value) ? -1 : 1;
+        }
+    } else {
+      return xSelected ? -1 : 1;
+    }
+  }
 }

@@ -11,13 +11,8 @@
       </div>
     </div>
     <div ngbDropdownMenu aria-labelledby="dropdownBasic">
-      <div *ngFor="let item of items" class="dropdown-item">
-        <input
-          class="check-input"
-          type="checkbox"
-          [checked]="isItemSelected(item.id)"
-          (change)="onItemSelect(item.id)"
-        >
+      <div *ngFor="let item of sortedItems" class="dropdown-item" (click)="onItemSelect(item.id)">
+        <i *ngIf="isItemSelected(item.id)" class="check-input fa fa-check"></i>
         <ng-container
           *ngTemplateOutlet="itemTemplate || defItemTemplate; context: {$implicit: item}">
         </ng-container>

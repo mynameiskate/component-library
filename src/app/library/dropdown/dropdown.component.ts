@@ -14,11 +14,6 @@ export class DropdownComponent extends ControlValueAccessorBase<String> {
 
   @Output() selectionChange = new EventEmitter<string>();
 
-  /*@HostBinding('attr.tabindex') tabindex = '0';
-  @HostListener('blur') onBlur() {
-    this.onTouchCallback();
-  }*/
-
   selectedItemId: string;
 
   onItemSelect = (id: string) => {
