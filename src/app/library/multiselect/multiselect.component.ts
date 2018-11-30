@@ -64,4 +64,8 @@ export class MultiselectComponent extends ControlValueAccessorBase<String> {
       return xSelected ? -1 : 1;
     }
   }
+
+  preventClose(event: MouseEvent) {
+    event.stopImmediatePropagation();
+  }
 }

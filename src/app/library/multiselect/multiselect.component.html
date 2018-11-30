@@ -1,22 +1,20 @@
 <div ngbDropdown
-     autoClose="outside"
+     [autoClose]="true"
      class="dropdown"
      #dropdownInstance="ngbDropdown"
      [ngClass]="{ 'element-disabled': disabled }">
   <h2 class="toggler-title" *ngIf="label">{{ label }}</h2>
-  <div class="search-container">
-    <div ngbDropdownToggle class="btn btn-outline  multiselect" (blur)="onBlur()">
-      <div class="dropdown-item" *ngIf="selectedItemsIds.length">
-        {{ selectedItems }}
-      </div>
+  <div ngbDropdownToggle class="btn btn-outline multiselect" (blur)="onBlur()">
+    <div class="dropdown-item" *ngIf="selectedItemsIds.length">
+      {{ selectedItems }}
     </div>
-    <div ngbDropdownMenu aria-labelledby="dropdownBasic">
-      <div *ngFor="let item of sortedItems" class="dropdown-item" (click)="onItemSelect(item.id)">
-        <i *ngIf="isItemSelected(item.id)" class="check-input fa fa-check"></i>
-        <ng-container
-          *ngTemplateOutlet="itemTemplate || defItemTemplate; context: {$implicit: item}">
-        </ng-container>
-      </div>
+  </div>
+  <div ngbDropdownMenu aria-labelledby="dropdownBasic" (click)="preventClose($event)">
+    <div *ngFor="let item of sortedItems" class="dropdown-item" (click)="onItemSelect(item.id)">
+      <i *ngIf="isItemSelected(item.id)" class="check-input fa fa-check"></i>
+      <ng-container
+        *ngTemplateOutlet="itemTemplate || defItemTemplate; context: {$implicit: item}">
+      </ng-container>
     </div>
   </div>
 </div>
