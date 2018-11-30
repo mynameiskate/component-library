@@ -10,6 +10,8 @@ import { CustomInputComponent } from "./library/custom-input/custom-input.compon
 import { ControlErrorsComponent } from "./shared/control-errors/control-errors.component";
 import { DropdownComponent } from "./library/dropdown/dropdown.component";
 import { MultiselectComponent } from "./library/multiselect/multiselect.component";
+import { AutocompleteComponent } from "./library/autocomplete/autocomplete.component";
+import { ContentEditableComponent } from "./shared/content-editable/content-editable.component";
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { MultiselectComponent } from "./library/multiselect/multiselect.componen
     CustomInputComponent,
     ControlErrorsComponent,
     DropdownComponent,
-    MultiselectComponent
+    MultiselectComponent,
+    AutocompleteComponent,
+    ContentEditableComponent
   ],
   imports: [
     NgbModule,

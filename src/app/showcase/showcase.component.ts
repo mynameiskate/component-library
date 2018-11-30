@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import * as _ from 'underscore';
 
 import * as ValidationService from "../shared/input-validation/InputValidationService";
 import { IDropdownItem } from "../library/dropdown/dropdown.models";
@@ -11,11 +12,13 @@ import { IDropdownItem } from "../library/dropdown/dropdown.models";
 })
 export class ShowcaseComponent {
   formData: any;
+  private delay: number = 100;
   inputForm = this.fb.group({
     username: ['', Validators.minLength(1)],
     email: ['', [Validators.required, Validators.email]],
     gender: null,
     countries: [],
+    birthCountry: null,
     password: ['',
       [
         Validators.required,
@@ -47,6 +50,35 @@ export class ShowcaseComponent {
     for(const key in this.inputForm.controls) {
       this.inputForm.controls[key].setErrors(null);
     }
+  }
+
+  searchOptions = (searchInput: string) => {
+    return _.filter(this.getCountryOptions(),
+      (item: IDropdownItem) => this.isSubstrFound(item.value, searchInput));
+  }
+
+
+  autocompleteOptions = (searchInput: string) => {
+    return Promise.resolve(this.searchOptions(searchInput))
+      .then((options) => (
+        this.delayPromise<IDropdownItem[]>(this.delay, options)
+      ));
+  }
+
+  getCountryPromise = () => {
+    return Promise.resolve(this.getCountryOptions());
+  }
+
+  private isSubstrFound(text: string, substr: string): boolean {
+    const normalizeStr = (str: string) =>  str ? str.trim().toLowerCase() : '';
+
+    return normalizeStr(text).indexOf(normalizeStr(substr)) !== -1;
+  }
+
+  private delayPromise<T>(ms: number, value: T) {
+    return new Promise<T>(resolve =>
+      setTimeout(() => resolve(value), ms)
+    );
   }
 
   getGenderOptions() {

@@ -24,6 +24,12 @@
     formControlName="countries"
     label="Countries you've been to">
   </clb-multiselect>
+  <clb-autocomplete
+    formControlName="birthCountry"
+    [itemsPromiseFunction]="getCountryPromise"
+    label="Birth country"
+    [autocompletePromiseFunction]="autocompleteOptions">
+  </clb-autocomplete>
   <clb-custom-input
     formControlName="password"
     inputLabel="Password"
