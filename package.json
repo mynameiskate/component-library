@@ -4,11 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o --port 4400",
-    "build": "ng build",
+    "build": "ng build --prod --base-href \"https://mynameiskate.github.io/component-library/\"",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "preinstall": "rm-local-modules"
+    "deploy": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages"
   },
   "private": true,
   "dependencies": {

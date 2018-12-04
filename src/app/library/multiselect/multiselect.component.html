@@ -4,7 +4,7 @@
      #dropdownInstance="ngbDropdown"
      [ngClass]="{ 'element-disabled': disabled }">
   <h2 class="toggler-title" *ngIf="label">{{ label }}</h2>
-  <div ngbDropdownToggle class="btn btn-outline multiselect" (blur)="onBlur()">
+  <div ngbDropdownToggle class="btn btn-outline multiselect">
     <div class="dropdown-item" *ngIf="selectedItemsIds.length">
       {{ selectedItems }}
     </div>

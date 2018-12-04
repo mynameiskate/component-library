@@ -2,7 +2,7 @@ import { forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export abstract class ControlValueAccessorBase<T> implements ControlValueAccessor {
-  protected innerValue: T;
+  innerValue: T;
   @Input() disabled: boolean = false;
 
   writeValue(value: T) {
@@ -11,7 +11,7 @@ export abstract class ControlValueAccessorBase<T> implements ControlValueAccesso
   }
 
   onChangeCallback = (_: any) => {}
-  onTouchCallback = () => {console.log('touched');}
+  onTouchCallback = () => { console.log('touched'); }
 
   registerOnChange(fn: (_: any) => void) {
     this.onChangeCallback = fn;

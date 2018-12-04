@@ -1,0 +1,19 @@
+<label class="checkbox">
+  <input
+    type="checkbox"
+    (change)="onStateChange($event.target.checked)"
+    [checked]="checked"
+    [disabled]="disabled"
+    value="">
+  <div
+    class="fill-in"
+    [ngClass]="{'disabled': disabled, 'checked': checked}">
+  </div>
+  <ng-container
+    *ngTemplateOutlet="labelTemplate || defLabelTemplate; context: {$implicit: label}">
+  </ng-container>
+</label>
+
+<ng-template let-caption #defLabelTemplate>
+  {{ label }}
+</ng-template>

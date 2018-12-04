@@ -18,6 +18,7 @@ export class ShowcaseComponent {
     gender: null,
     countries: [],
     birthCountry: null,
+    unicornCheck: null,
     password: ['',
       [
         Validators.required,
