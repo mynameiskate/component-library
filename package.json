@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "cd dist && git add --all && git commit -m \"Release\" --date=format:rfc2822 && git subtree push --prefix dist origin gh-pages"
+    "deploy": "cd dist && git add --all && git commit -m \"Release\" --date=format:rfc2822 && git push origin gh-pages"
   },
   "private": true,
   "dependencies": {
