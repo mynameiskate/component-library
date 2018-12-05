@@ -48,10 +48,11 @@
   >
   </clb-checkbox>
   <clb-radiogroup
+    [optionTemplate]="radioLabelTemplate"
     formControlName="favColour"
     label="Pick the best colour">
-    <clb-radio-btn label="test option 1"></clb-radio-btn>
-    <clb-radio-btn label="test option 2"></clb-radio-btn>
+    <clb-radio-btn label="red"></clb-radio-btn>
+    <clb-radio-btn label="blue"></clb-radio-btn>
   </clb-radiogroup>
   <div class="btn-group" role="group">
     <button
@@ -80,4 +81,9 @@
   >
     {{ item.value }}
   </div>
+</ng-template>
+
+
+<ng-template let-caption #radioLabelTemplate>
+  <div class="lovely">{{ caption }}</div>
 </ng-template>

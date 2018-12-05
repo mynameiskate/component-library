@@ -6,8 +6,7 @@ import {
   QueryList,
   ContentChildren,
   ElementRef,
-  AfterContentInit,
-  TemplateRef
+  TemplateRef, OnInit
 } from '@angular/core';
 import { ControlValueAccessorBase, CreateAccessorProvider } from '../../shared/control-value-accessor/ControlValueAccessorBase';
 import { RadiobuttonComponent } from '../radiobutton/radiobutton.component';
@@ -18,7 +17,7 @@ import { RadiogroupService } from './radiogroup.service';
   templateUrl: './radiogroup.component.html',
   providers: [CreateAccessorProvider(RadiogroupComponent), RadiogroupService]
 })
-export class RadiogroupComponent extends ControlValueAccessorBase<string> implements AfterContentInit {
+export class RadiogroupComponent extends ControlValueAccessorBase<string> implements OnInit {
   @Input() label: string;
   @Input() formControlName: string;
   @Input() optionTemplate: TemplateRef<any>;
@@ -32,7 +31,7 @@ export class RadiogroupComponent extends ControlValueAccessorBase<string> implem
     super();
   }
 
-  ngAfterContentInit() {
+  ngOnInit() {
     this.btnGroupService.init(this.formControlName, this.optionTemplate);
   }
 
