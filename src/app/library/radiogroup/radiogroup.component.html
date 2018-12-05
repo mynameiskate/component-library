@@ -1,4 +1,4 @@
-<div class="radiogroup">
+<div class="radiogroup" (input)="onChange($event.target)">
   <label class="input-label">{{ label }}</label>
-  <div class="radioButtonContainer" (input)="onChange($event.target.value)"></div>
+  <ng-content></ng-content>
 </div>

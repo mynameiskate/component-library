@@ -10,7 +10,6 @@ export class CheckboxComponent extends ControlValueAccessorBase<boolean> impleme
   @Input() label: string;
   @Input() defaultState: boolean = false;
   @Input() labelTemplate: TemplateRef<any>;
-  @Input() checkboxTemplate: TemplateRef<any>;
 
   @Output() selectionChange = new EventEmitter<boolean>();
 

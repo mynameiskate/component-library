@@ -1,13 +1,19 @@
 <label class="radio">
-  <input type="radio" [value]="label">
-  <div class="fill-in"></div>
+  <input
+    [id]="btnId"
+    [name]="btnName"
+    type="radio"
+    [value]="label"
+    [(ngModel)]="checked">
+  <div
+    class="fill-in"
+    [ngClass]="{'disabled': disabled, 'checked': checked}">
+  </div>
   <ng-container
     *ngTemplateOutlet="labelTemplate || defLabelTemplate; context: {$implicit: label}">
   </ng-container>
 </label>
 
 <ng-template let-caption #defLabelTemplate>
-  <div class="fill-in">
-    {{ caption }}
-  </div>
+  {{ caption }}
 </ng-template>
