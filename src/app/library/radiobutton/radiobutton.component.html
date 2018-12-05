@@ -1,0 +1,13 @@
+<label class="radio">
+  <input type="radio" [value]="label">
+  <div class="fill-in"></div>
+  <ng-container
+    *ngTemplateOutlet="labelTemplate || defLabelTemplate; context: {$implicit: label}">
+  </ng-container>
+</label>
+
+<ng-template let-caption #defLabelTemplate>
+  <div class="fill-in">
+    {{ caption }}
+  </div>
+</ng-template>

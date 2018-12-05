@@ -13,6 +13,8 @@ import { MultiselectComponent } from './library/multiselect/multiselect.componen
 import { AutocompleteComponent } from './library/autocomplete/autocomplete.component';
 import { ContentEditableComponent } from './shared/content-editable/content-editable.component';
 import { CheckboxComponent } from './library/checkbox/checkbox.component';
+import { RadiobuttonComponent } from './library/radiobutton/radiobutton.component';
+import { RadiogroupComponent } from './library/radiogroup/radiogroup.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { CheckboxComponent } from './library/checkbox/checkbox.component';
     MultiselectComponent,
     AutocompleteComponent,
     ContentEditableComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    RadiobuttonComponent,
+    RadiogroupComponent
   ],
   imports: [
     NgbModule,

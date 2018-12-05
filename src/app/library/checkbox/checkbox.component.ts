@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, TemplateRef, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, TemplateRef, OnInit } from '@angular/core';
 import { ControlValueAccessorBase, CreateAccessorProvider } from '../../shared/control-value-accessor/ControlValueAccessorBase';
 
 @Component({
