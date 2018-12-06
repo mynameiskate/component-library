@@ -4,7 +4,7 @@
     [name]="btnName"
     type="radio"
     [value]="label"
-    [(ngModel)]="checked">
+    (change)="onBtnSelect()">
   <div
     class="fill-in"
     [ngClass]="{'disabled': disabled, 'checked': checked}">

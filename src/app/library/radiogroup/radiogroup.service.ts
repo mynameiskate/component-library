@@ -1,7 +1,11 @@
 import { Injectable, TemplateRef } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class RadiogroupService {
+  private selectedId = new Subject<string>();
+  selectedId$ = this.selectedId.asObservable();
+
   formGroupName: string = '';
   index: number = 0;
   optionTemplate: TemplateRef<any>;
@@ -23,5 +27,9 @@ export class RadiogroupService {
 
   getBtnTemplate() {
     return this.optionTemplate;
+  }
+
+  announceSelectedBtnId(btnId: string) {
+    this.selectedId.next(btnId);
   }
 }

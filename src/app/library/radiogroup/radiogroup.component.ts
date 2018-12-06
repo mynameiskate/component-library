@@ -36,17 +36,8 @@ export class RadiogroupComponent extends ControlValueAccessorBase<string> implem
   }
 
   onChange(target) {
-    this.updateButtonGroup(target.id);
     this.writeValue(target.value);
     this.onChangeCallback(target.value);
     this.selectionChange.emit(target.value);
-  }
-
-  updateButtonGroup(checkedId) {
-    this.radioButtons.forEach(item => {
-      const input = item.el.nativeElement
-        .getElementsByTagName('input')[0];
-      item.checked = checkedId === input.id;
-    });
   }
 }
