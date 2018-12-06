@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { ControlValueAccessorBase, CreateAccessorProvider } from '../../shared/control-value-accessor/ControlValueAccessorBase';
 import { RadiogroupService } from '../radiogroup/radiogroup.service';
 import { Subscription } from 'rxjs';
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './radiobutton.component.html',
   providers: [CreateAccessorProvider(RadiobuttonComponent)]
 })
-export class RadiobuttonComponent extends ControlValueAccessorBase<string> implements OnInit {
+export class RadiobuttonComponent extends ControlValueAccessorBase<string> implements OnInit, OnDestroy {
   @Input() label: string;
 
   private subscription: Subscription;
@@ -18,8 +18,7 @@ export class RadiobuttonComponent extends ControlValueAccessorBase<string> imple
   btnName: string;
   btnId: string;
 
-  constructor(public el: ElementRef,
-              private btnGroupService: RadiogroupService) {
+  constructor(private btnGroupService: RadiogroupService) {
     super();
 
     this.subscription = this.btnGroupService
@@ -33,6 +32,10 @@ export class RadiobuttonComponent extends ControlValueAccessorBase<string> imple
     this.btnName = this.btnGroupService.getBtnName();
     this.btnId = this.btnGroupService.getBtnId();
     this.labelTemplate = this.btnGroupService.getBtnTemplate();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   onBtnSelect() {

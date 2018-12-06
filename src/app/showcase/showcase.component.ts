@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import * as ValidationService from "../shared/input-validation/InputValidationService";
-import { EndpointService } from "../shared/endpoints-service/EndpointService";
+import * as ValidationService from '../shared/input-validation/InputValidationService';
+import { EndpointService } from '../shared/endpoints-service/EndpointService';
 
 @Component({
   selector: 'app-showcase',
@@ -56,17 +56,21 @@ export class ShowcaseComponent {
 
   autocompleteOptions = (searchInput: string) => (
     this.service.getCountryAutocompleteOptions(searchInput)
-  );
+  )
 
   getCountryPromise = () => (
     this.service.getCountryPromise()
-  );
+  )
 
   getGenderOptions = () => (
     this.service.getGenderOptions()
-  );
+  )
 
   getCountryOptions = () => (
     this.service.getCountryOptions()
-  );
+  )
+
+  getColourOptions = () => (
+    this.service.getColourOptions()
+  )
 }

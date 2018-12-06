@@ -30,7 +30,7 @@ export class CustomInputComponent extends ControlValueAccessorBase<string> imple
     super.writeValue(value);
   }
 
-  updateValue(event) {
+  updateValue() {
     const value = this.element.nativeElement.value;
     this.onChangeCallback(value);
   }

@@ -4,11 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o --port 4400",
-    "build": "ng build --prod --base-href \"https://mynameiskate.github.io/component-library/\"",
+    "build": "ng build --prod --output-path docs --base-href \"https://mynameiskate.github.io/component-library/\"",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "deploy": "cd dist git add --all && git commit -m \"Release\" --date=format:rfc2822 && git push origin gh-pages"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
