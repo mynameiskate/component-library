@@ -51,8 +51,8 @@ export class MultiselectComponent extends ControlValueAccessorBase<String> {
   }
 
   checkedSort = (x: IDropdownItem, y: IDropdownItem) => {
-    const xSelected = this.selectedItemsIds.some(id => x.id == id);
-    const ySelected = this.selectedItemsIds.some(id => y.id == id);
+    const xSelected = this.selectedItemsIds.some(id => x.id === id);
+    const ySelected = this.selectedItemsIds.some(id => y.id === id);
 
     if (xSelected && ySelected) {
       if (x.value === y.value) {

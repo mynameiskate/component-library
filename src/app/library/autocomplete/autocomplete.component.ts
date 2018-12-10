@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, TemplateRef, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, TemplateRef, OnChanges, OnInit, HostListener } from '@angular/core';
 import { IDropdownItem } from '../dropdown/dropdown.models';
 import { ControlValueAccessorBase, CreateAccessorProvider } from '../../shared/control-value-accessor/ControlValueAccessorBase';
 
@@ -22,6 +22,7 @@ export class AutocompleteComponent extends ControlValueAccessorBase<String> impl
   searchText: string;
   selectedItem: IDropdownItem;
   autocompleteItems: IDropdownItem[] = [];
+
 
   ngOnInit() {
     this.autocompleteOptions = _.debounce(this.autocompleteOptions, this.debounceTime);

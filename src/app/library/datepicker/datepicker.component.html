@@ -1,6 +1,7 @@
 <h2 class="toggler-title" *ngIf="label">{{ label }}</h2>
 <div class="calendar input-group">
   <input
+    [autoClose]="false"
     class="datepicker"
     ngbDatepicker
     #datepickerInstance="ngbDatepicker"
@@ -8,5 +9,7 @@
     (ngModelChange)="onDateChange($event)"
     (click)="datepickerInstance.toggle()"
     [placeholder]="placeholder"
+    [minDate]="minDateStruct"
+    [maxDate]="maxDateStruct"
   />
 </div>

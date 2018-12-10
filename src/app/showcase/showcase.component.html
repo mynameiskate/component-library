@@ -45,6 +45,8 @@
   <clb-datepicker
     formControlName="birthday"
     label="Choose your birthday"
+    [minDate]="startDate"
+    [maxDate]="endDate"
   >
   </clb-datepicker>
   <clb-checkbox

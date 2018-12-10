@@ -50,7 +50,7 @@ export class ShowcaseComponent {
   resetForm(): void {
     this.inputForm.reset();
 
-    for(const key in this.inputForm.controls) {
+    for (const key in this.inputForm.controls) {
       this.inputForm.controls[key].setErrors(null);
     }
   }
@@ -78,4 +78,12 @@ export class ShowcaseComponent {
   getColorOptions = () => (
     this.service.getColorOptions()
   )
+
+  get startDate() {
+    return new Date(1990, 0,  1);
+  }
+
+  get endDate() {
+    return new Date();
+  }
 }
