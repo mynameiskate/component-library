@@ -20,6 +20,7 @@ export class ShowcaseComponent {
     birthCountry: null,
     unicornCheck: null,
     favColour: null,
+    birthday: null,
     password: ['',
       [
         Validators.required,
@@ -72,5 +73,9 @@ export class ShowcaseComponent {
 
   getColourOptions = () => (
     this.service.getColourOptions()
+  )
+
+  getColorOptions = () => (
+    this.service.getColorOptions()
   )
 }

@@ -1,0 +1,12 @@
+<h2 class="toggler-title" *ngIf="label">{{ label }}</h2>
+<div class="calendar input-group">
+  <input
+    class="datepicker"
+    ngbDatepicker
+    #datepickerInstance="ngbDatepicker"
+    [(ngModel)]="selectedDate"
+    (ngModelChange)="onDateChange($event)"
+    (click)="datepickerInstance.toggle()"
+    [placeholder]="placeholder"
+  />
+</div>

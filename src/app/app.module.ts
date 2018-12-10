@@ -15,6 +15,7 @@ import { ContentEditableComponent } from './shared/content-editable/content-edit
 import { CheckboxComponent } from './library/checkbox/checkbox.component';
 import { RadiobuttonComponent } from './library/radiobutton/radiobutton.component';
 import { RadiogroupComponent } from './library/radiogroup/radiogroup.component';
+import { DatepickerComponent } from './library/datepicker/datepicker.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { RadiogroupComponent } from './library/radiogroup/radiogroup.component';
     ContentEditableComponent,
     CheckboxComponent,
     RadiobuttonComponent,
-    RadiogroupComponent
+    RadiogroupComponent,
+    DatepickerComponent
   ],
   imports: [
     NgbModule,

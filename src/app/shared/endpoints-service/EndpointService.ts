@@ -1,5 +1,6 @@
 import { IDropdownItem } from '../../library/dropdown/dropdown.models';
 import * as _ from 'underscore';
+import { IRadioGroupItem } from '../../library/radiogroup/radiogroup.models';
 
 export class EndpointService {
   private delay: number = 100;
@@ -52,8 +53,20 @@ export class EndpointService {
       'sand yellow',
       'forest green'
     ];
-
     return colours;
+  }
+
+  getColorOptions(): Array<IRadioGroupItem> {
+    const colors: Array<IRadioGroupItem> = [
+      {id: '0', value: 'blood red'},
+      {id: '1', value: 'pitch black'},
+      {id: '2', value: 'stark white'},
+      {id: '3', value: 'ocean blue'},
+      {id: '4', value: 'sand yellow'},
+      {id: '5', value: 'forest green'}
+    ];
+
+    return colors;
   }
 
   getCountryOptions() {
