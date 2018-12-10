@@ -82,7 +82,7 @@
   <clb-control-errors [control]="inputForm"></clb-control-errors>
 </form>
 
-<pre>{{ formData | json }}</pre>
+<pre>{{ inputForm.value | json }}</pre>
 
 <ng-template dropdown-selected-value let-item #item>
   <div

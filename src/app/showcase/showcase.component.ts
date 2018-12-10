@@ -20,7 +20,7 @@ export class ShowcaseComponent {
     birthCountry: null,
     unicornCheck: null,
     favColour: null,
-    birthday: null,
+    birthday: new Date(),
     password: ['',
       [
         Validators.required,

@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
 import { ControlValueAccessorBase, CreateAccessorProvider } from '../../shared/control-value-accessor/ControlValueAccessorBase';
 import { NgbDateStruct, NgbInputDatepicker, NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 
@@ -21,8 +21,16 @@ export class DatepickerComponent extends ControlValueAccessorBase<NgbDateStruct>
   selectedDate: NgbDateStruct;
 
   constructor(private el: ElementRef,
-              private adapter: NgbDateAdapter) {
+              private adapter: NgbDateAdapter<Date>) {
     super();
+  }
+
+  @HostListener('document:click', ['$event'])
+    handleClick(event: Event) {
+      if (!this.el.nativeElement.contains(event.target)
+        && this.datepickerInstance.isOpen()) {
+        this.datepickerInstance.close();
+      }
   }
 
   get minDateStruct() {
@@ -31,14 +39,6 @@ export class DatepickerComponent extends ControlValueAccessorBase<NgbDateStruct>
 
   get maxDateStruct() {
     return this.adapter.fromModel(this.maxDate);
-  }
-
-  @HostListener('document:click', ['$event'])
-  handleClick(event: Event) {
-    if (!this.el.nativeElement.contains(event.target)
-      && this.datepickerInstance.isOpen()) {
-      this.datepickerInstance.close();
-    }
   }
 
   onDateChange(date: NgbDateStruct) {
