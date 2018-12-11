@@ -13,7 +13,6 @@
     *ngTemplateOutlet="labelTemplate || defLabelTemplate; context: {$implicit: label}">
   </ng-container>
 </label>
-
 <ng-template let-caption #defLabelTemplate>
   {{ label }}
 </ng-template>

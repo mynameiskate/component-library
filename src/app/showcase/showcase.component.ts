@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import * as ValidationService from '../shared/input-validation/InputValidationService';
@@ -21,6 +21,7 @@ export class ShowcaseComponent {
     unicornCheck: null,
     favColour: null,
     birthday: new Date(),
+    phone: '',
     password: ['',
       [
         Validators.required,
