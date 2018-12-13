@@ -1,6 +1,5 @@
 import {
   AfterContentInit,
-  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -44,8 +43,7 @@ export class DatepickerComponent extends ControlValueAccessorBase<NgbDateStruct>
   }
 
   constructor(private el: ElementRef,
-              private adapter: NgbDateAdapter<Date>,
-              private cd: ChangeDetectorRef) {
+              private adapter: NgbDateAdapter<Date>) {
     super();
   }
 

@@ -16,6 +16,7 @@ import { CheckboxComponent } from './library/checkbox/checkbox.component';
 import { RadiobuttonComponent } from './library/radiobutton/radiobutton.component';
 import { RadiogroupComponent } from './library/radiogroup/radiogroup.component';
 import { DatepickerComponent } from './library/datepicker/datepicker.component';
+import { MaskedInputComponent } from './library/masked-input/masked-input.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { DatepickerComponent } from './library/datepicker/datepicker.component';
     CheckboxComponent,
     RadiobuttonComponent,
     RadiogroupComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    MaskedInputComponent
   ],
   imports: [
     NgbModule,
