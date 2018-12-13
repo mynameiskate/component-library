@@ -8,5 +8,6 @@
   (keydown)="insertText($event)"
   (blur)="onTouchCallback()"
   [type]="inputType"
+  autocomplete="off"
   ngDefaultControl>
 <clb-control-errors [control]="control"></clb-control-errors>

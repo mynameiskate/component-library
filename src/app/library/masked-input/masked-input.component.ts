@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, OnInit, Input, Injector, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit, Input, Injector, Output, EventEmitter, HostListener } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import * as _ from 'lodash';
 import { ControlValueAccessorBase, CreateAccessorProvider } from '../../shared/control-value-accessor/ControlValueAccessorBase';
@@ -23,6 +23,27 @@ export class MaskedInputComponent extends ControlValueAccessorBase<string> imple
   @ViewChild('element') element: ElementRef;
 
   control: NgControl;
+
+  @HostListener('paste', ['$event'])
+  onPaste(e: ClipboardEvent) {
+    const { clipboardData } = e;
+    const pastedText = clipboardData.getData('Text');
+    e.preventDefault();
+
+    _.forEach(pastedText, (char, i) => {
+      if (_.isRegExp(this.mask[i])) {
+        const regexp = <RegExp>this.mask[i];
+
+        if (!regexp.test(char)) {
+          return false;
+        }
+      } else if (char !== this.mask[i]) {
+        return false;
+      }
+    });
+
+    this.writeValue(pastedText);
+  }
 
   constructor(private inj: Injector) {
     super();
@@ -79,6 +100,8 @@ export class MaskedInputComponent extends ControlValueAccessorBase<string> imple
         return false;
       }
     }
+
+    this.writeValue(event.target.value);
   }
 }
 
