@@ -2,12 +2,12 @@
 <input
   #element
   name="inputText"
+  type="text"
   [ngClass]="{ invalid: !control.valid }"
   class="outline editable"
   [ngModel]="innerValue"
   (keydown)="insertText($event)"
   (blur)="onTouchCallback()"
-  [type]="inputType"
   autocomplete="off"
   ngDefaultControl>
 <clb-control-errors [control]="control"></clb-control-errors>

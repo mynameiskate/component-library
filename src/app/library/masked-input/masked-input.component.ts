@@ -26,23 +26,26 @@ export class MaskedInputComponent extends ControlValueAccessorBase<string> imple
 
   @HostListener('paste', ['$event'])
   onPaste(e: ClipboardEvent) {
-    const { clipboardData } = e;
-    const pastedText = clipboardData.getData('Text');
     e.preventDefault();
 
-    _.forEach(pastedText, (char, i) => {
-      if (_.isRegExp(this.mask[i])) {
-        const regexp = <RegExp>this.mask[i];
+    const { clipboardData } = e;
+    const newText = this.innerValue.slice(0, e.target.selectionStart)
+      .concat(clipboardData.getData('Text'))
+      .substring(0, this.mask.length);
 
-        if (!regexp.test(char)) {
+      for (let i = 0; i < newText.length; i++) {
+        if (_.isRegExp(this.mask[i])) {
+          const regexp = <RegExp>this.mask[i];
+
+          if (!regexp.test(newText[i])) {
+            return false;
+          }
+        } else if (newText[i] !== this.mask[i]) {
           return false;
         }
-      } else if (char !== this.mask[i]) {
-        return false;
       }
-    });
 
-    this.writeValue(pastedText);
+    this.writeValue(newText);
   }
 
   constructor(private inj: Injector) {
@@ -77,31 +80,35 @@ export class MaskedInputComponent extends ControlValueAccessorBase<string> imple
   insertText(event) {
     event.preventDefault();
 
-    const { key } = event;
-    const { value } = event.target;
+    const { key, target } = event;
+    let { value } = event.target;
     let index = value.length;
 
     if ((key === 'Backspace') || (key === 'Delete')) {
+      const selectionLength = target.selectionEnd - target.selectionStart;
       const delStart = _.findLastIndex(this.mask,
-        (exp, i) => (_.isRegExp(exp)) && (i < value.length));
-      event.target.value = value.slice(0, Math.max(delStart, 0));
+        (exp, i) =>
+          (_.isRegExp(exp)) && (i < target.selectionStart + (selectionLength ? 1 : 0))
+      );
+
+      value = value.slice(0, Math.max(delStart, 0));
     } else if (value.length >= this.mask.length) {
       return false;
     } else {
-      event.target.value += this.getMaskStr(index, this.mask);
-      index = event.target.value.length;
+      value += this.getMaskStr(index, this.mask);
+      index = value.length;
 
       const regexp = <RegExp>this.mask[index++];
 
-      if (regexp.test(key)) {
-        event.target.value += key;
-        event.target.value += this.getMaskStr(index, this.mask);
+      if ((key.length == 1) && (regexp.test(key))) {
+        value += key;
+        value += this.getMaskStr(index, this.mask);
       } else {
         return false;
       }
     }
 
-    this.writeValue(event.target.value);
+    this.writeValue(value);
   }
 }
 
