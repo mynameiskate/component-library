@@ -58,7 +58,7 @@ export class MultiselectComponent extends ControlValueAccessorBase<String> {
       if (x.value === y.value) {
         return 0;
       } else {
-        return (x.value > y.value) ? -1 : 1;
+        return (x.value < y.value) ? -1 : 1;
         }
     } else {
       return xSelected ? -1 : 1;
