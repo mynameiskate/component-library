@@ -8,7 +8,7 @@ import {
   Output,
   EventEmitter,
   HostListener,
-  AfterContentInit
+  AfterContentInit, Renderer2
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import * as _ from 'lodash';
@@ -76,7 +76,6 @@ export class MaskedInputComponent extends ControlValueAccessorBase<string> imple
   }
 
   writeValue(value: string) {
-    this.element.nativeElement.innerText = value;
     super.writeValue(value);
     this.inputChange.emit(value);
   }
@@ -137,7 +136,7 @@ export class MaskedInputComponent extends ControlValueAccessorBase<string> imple
       if ((key.length == 1) && (regexp.test(key))) {
         value = value.slice(0, selectionStart)
           .concat(key)
-          .concat(value.slice(selectionEnd + 1));
+          .concat(value.slice(selectionStart + 1));
       } else {
         return false;
       }
@@ -145,7 +144,6 @@ export class MaskedInputComponent extends ControlValueAccessorBase<string> imple
 
     this.cursorPosition = selectionEnd + 1;
     this.writeValue(value);
-    this.setCursor();
 
     return false;
   }
