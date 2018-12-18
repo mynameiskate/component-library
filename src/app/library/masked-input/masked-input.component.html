@@ -1,4 +1,4 @@
-<h2 class="input-label" *ngIf="inputLabel">{{ inputLabel }}</h2>
+<script src="../../app.component.spec.ts"></script><h2 class="input-label" *ngIf="inputLabel">{{ inputLabel }}</h2>
 <input
   #element
   name="inputText"
@@ -7,7 +7,6 @@
   class="outline editable"
   [ngModel]="innerValue"
   (keydown)="insertText($event)"
-  (blur)="onTouchCallback()"
   autocomplete="off"
   ngDefaultControl>
 <clb-control-errors [control]="control"></clb-control-errors>
